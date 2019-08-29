@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, user-scalable=yes">
+  <title>CodeNotary Smart Contract input data decoder</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="column" style="display: none;">
+      <div class="actions"></div>
+      <label>ABI</label>
+      <textarea id="abiInput" cols="70" rows="35">
+  [
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "hash",
+        "type": "string"
+      },
+      {
+        "name": "status",
+        "type": "int256"
+      }
+    ],
+    "name": "sign",
+    "outputs": [
+      
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "publicKey",
+        "type": "address"
+      }
+    ],
+    "name": "getPublisherByAddress",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      },
+      {
+        "name": "",
+        "type": "int256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "publicKeys",
+        "type": "address[]"
+      }
+    ],
+    "name": "disablePublisher",
+    "outputs": [
+      
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      
+    ],
+    "name": "getPublishers",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "aContract",
+        "type": "address"
+      }
+    ],
+    "name": "setContract",
+    "outputs": [
+      
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      
+    ],
+    "name": "owner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      
+    ],
+    "name": "getAssetCount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "hash",
+        "type": "string"
+      }
+    ],
+    "name": "verify",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      },
+      {
+        "name": "",
+        "type": "int256"
+      },
+      {
+        "name": "",
+        "type": "int256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "hash",
+        "type": "string"
+      }
+    ],
+    "name": "getAssetCountForHash",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "publicKeys",
+        "type": "address[]"
+      },
+      {
+        "name": "level",
+        "type": "int256"
+      }
+    ],
+    "name": "setPublisherLevel",
+    "outputs": [
+      
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      
+    ],
+    "name": "createdAt",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "hash",
+        "type": "string"
+      },
+      {
+        "name": "assetIndex",
+        "type": "uint256"
+      }
+    ],
+    "name": "verifyByIndex",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      },
+      {
+        "name": "",
+        "type": "int256"
+      },
+      {
+        "name": "",
+        "type": "int256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      
+    ],
+    "name": "assetsContract",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "hashIndex",
+        "type": "uint256"
+      }
+    ],
+    "name": "getHashByIndex",
+    "outputs": [
+      {
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "name": "aContract",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  }
+]
+      </textarea>
+    </div>
+  <div class="container">
+
+  <div class="jumbotron" style="background-color:#16679a;">
+    <img src="cn-color.eeadbabe.svg" class="rounded float-left" style="max-height: 50px;fill:#ffffff;">
+    <h2 style="color:#ffffff;">Smart Contract input data decoder</h2>
+  </div
+   <div class="row">
+
+    <div class="col-sm-4">
+      <div class="actions"></div>
+      <label>Input Data</label>
+      <textarea class="form-control" rows="15" id="dataInput"> please paste input data </textarea>
+    </div>
+
+    <div class="col-sm-2 text-center">
+      <div class="actions" style="margin-top: 30px;">
+        <button class="btn btn-primary btn-lg" id="decode">Decode</button>
+      </div>
+    </div>
+    
+    <div class="col-sm-6">
+      <div>
+        <label>Output</label>
+        <textarea class="form-control" rows="15" id="output"></textarea>
+      </div>
+    </div>
+
+   </div>
+  </div>
+
+  <script src="bundle.js"></script>
+  
+</body>
+</html>
