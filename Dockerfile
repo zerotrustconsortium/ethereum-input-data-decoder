@@ -1,6 +1,6 @@
 FROM mhart/alpine-node:12
 
-ADD ./cn-app /app
+ADD /cn-app /app
 
 RUN npm install -g http-server
 
