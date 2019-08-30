@@ -1,11 +1,7 @@
-FROM node:10
+FROM mhart/alpine-node:12
 
-ADD ./abi-presinglewallet_vchain.json /home/abi-presinglewallet_vchain.json
 ADD ./cn-app /app
 
-RUN npm install -g ethereum-input-data-decoder
-RUN npm install ethereum-input-data-decoder
-RUN npm install jsvcn
 RUN npm install -g http-server
 
 WORKDIR /app
