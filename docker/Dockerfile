@@ -5,6 +5,7 @@ ADD ./cn-app /app
 
 RUN npm install -g ethereum-input-data-decoder
 RUN npm install ethereum-input-data-decoder
+RUN npm install jsvcn
 RUN npm install -g http-server
 
 WORKDIR /app

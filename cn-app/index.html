@@ -4,10 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1, user-scalable=yes">
   <title>CodeNotary Smart Contract input data decoder</title>
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+  <link rel="shortcut icon" type="image/png" href="https://vchaindecode.zerotrustconsortium.org/favicon.ico"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+  <script src="https://cdn.ethers.io/scripts/ethers-v4.min.js" charset="utf-8" type="text/javascript"></script>
+  <script src="./jsvcn.min.js" charset="utf-8" type="text/javascript"></script>
 </head>
 <body>
     <div class="column" style="display: none;">
@@ -334,15 +337,40 @@
     
     <div class="col-sm-6">
       <div>
-        <label>Output</label>
+        <label>Blockchain Result</label>
         <textarea class="form-control" rows="15" id="output"></textarea>
       </div>
+
+      <div>
+        <label>CodeNotary Result</label>
+        <textarea class="form-control" rows="15" id="getvcn"></textarea>
+      </div>
+
+
+     <script>
+      const jsvcn = new Jsvcn();
+      var quotearea = document.getElementById('output')
+      var output = document.getElementById('getvcn')
+      quotearea.addEventListener('mouseup', function(){
+      if (this.selectionStart != this.selectionEnd){ // check the user has selected some text inside field
+        var selectedtext = this.value.substring(this.selectionStart, this.selectionEnd)
+        jsvcn.verify(selectedtext).then((response) => {
+				output.value = JSON.stringify(response, null, 2);
+
+			})
+       }
+      }, false)
+
+     </script>
+
+
     </div>
 
    </div>
   </div>
 
   <script src="bundle.js"></script>
+
   
 </body>
 </html>
