@@ -7,10 +7,16 @@
   <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
   <link rel="shortcut icon" type="image/png" href="https://vchaindecode.zerotrustconsortium.org/favicon.ico"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/pretty-json.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
   <script src="https://cdn.ethers.io/scripts/ethers-v4.min.js" charset="utf-8" type="text/javascript"></script>
-  <script src="./jsvcn.min.js" charset="utf-8" type="text/javascript"></script>
+  <script src="libs/jsvcn.min.js" charset="utf-8" type="text/javascript"></script>
+  <script type="text/javascript" src="libs/underscore-min.js" ></script>
+  <script type="text/javascript" src="libs/backbone-min.js" ></script>
+  <script type="text/javascript" src="libs/pretty-json-min.js" ></script>
+
+
 </head>
 <body>
     <div class="column" style="display: none;">
@@ -323,10 +329,11 @@
   </div
    <div class="row">
 
-    <div class="col-sm-4">
+    <div class="col-sm-3">
       <div class="actions"></div>
       <label>Input Data</label>
       <textarea class="form-control" placeholder="please paste input data" rows="15" id="dataInput"></textarea>
+      <p>Select a transaction input from </br><a href="https://explore.zerotrustconsortium.org" target="_blank">ZTC Blockchain Explorer</a></p>
     </div>
 
     <div class="col-sm-2 text-center">
@@ -335,15 +342,16 @@
       </div>
     </div>
     
-    <div class="col-sm-6">
+    <div class="col-sm-7">
       <div>
         <label>Blockchain Result</label>
-        <textarea class="form-control"  rows="15" id="output"></textarea>
+        <textarea class="form-control" style="resize: none;" rows="15" id="output"></textarea>
       </div>
       </br>
       <div>
-        <label>CodeNotary Result</label>
-        <textarea class="form-control" rows="15" placeholder="please select the Hash in the Blockchain results text" id="getvcn"></textarea>
+        <label>CodeNotary Result (doubleclick Hash input within Bockchain result)</label>
+	</br>
+        <span id="result"></span>
       </div>
 
 
@@ -351,12 +359,15 @@
       const jsvcn = new Jsvcn();
       var quotearea = document.getElementById('output')
       var output = document.getElementById('getvcn')
+
       quotearea.addEventListener('mouseup', function(){
       if (this.selectionStart != this.selectionEnd){ // check the user has selected some text inside field
         var selectedtext = this.value.substring(this.selectionStart, this.selectionEnd)
         jsvcn.verify(selectedtext).then((response) => {
-				output.value = JSON.stringify(response, null, 2);
-
+                                var node = new PrettyJSON.view.Node({ 
+                                el:$('#result'), 
+                                data:response
+                                });
 			})
        }
       }, false)
